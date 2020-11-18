@@ -1,0 +1,109 @@
+
+*{
+    padding:0;
+    margin:0;
+
+}
+
+body{
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.logoGrande {
+    margin-left: 2%;
+    font-size: 80px;
+    color: #fff;
+    text-align: center;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;    
+  }
+
+
+#obligatorio{
+    color: red;
+}
+
+.inputForm{
+    position: relative;
+    margin-left: 13px;
+}
+
+.form{
+    position: absolute;
+    max-width: 40%;
+    max-height: 100%;
+    overflow: auto;
+    padding: 32px;
+    margin-left: 36.3%;
+    margin-right: 40%;
+    margin-top: 5%;
+    background-color: black;
+    opacity: 89%;
+    border-top-left-radius: 6%;
+    border-top-right-radius: 6%;
+    border-bottom-left-radius: 6%;
+    border-bottom-right-radius: 6%;
+}
+
+label{
+    color: aqua;
+}
+
+.estadoCivil{
+    position: relative;
+    margin-left: 6.8%;
+}
+
+.sexo{
+    position: relative;
+    margin-left: 6.8%;
+}
+
+.botonEnviar{
+    position: relative;
+    padding: 7px;
+    margin-left: 35%;
+    margin-top: 10.1%;
+}
+
+.botReset{
+    position: relative;
+    padding: 7px;
+    margin-top: 4%;
+    margin-left: 42%;
+}
+
+#mensajeError{
+    position: relative;
+    text-align: center;
+    color: red;
+}
+
+.botonera{
+    position: relative;
+}
+
+.miniLogo{
+    max-width: 100%; height: auto;
+    width: 13%;
+}
+
+.miniLogo:hover{
+    opacity: 0.7;
+}
+
+p{
+    color: chartreuse;
+}
+
+@-webkit-keyframes glow {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+  }
