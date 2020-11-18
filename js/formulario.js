@@ -1,18 +1,33 @@
 function compruebaFormulario(){
     
-    if(comprobarDNI() && comprobarEMAIL() && comprobarTLF() && comprobarSEXO() && comprobarFecha()){
+    if(todasCorrectas()){
         //Si ha pasado todos los filtros, podemos enviar el formulario y borramos los errores
-        document.getElementById("errorFecha").style.display = "none";
-        let mandarFormulario = window.confirm("Revise los datos antes de enviar el formulario. \n ¿Seguro que desea enviarlo?");
-        if(mandarFormulario){
-            alert("True");
+        document.getElementById("errorFechaPosterior").style.display = "none";
+        if(window.confirm("Revise los datos antes de enviar el formulario. \n ¿Seguro que desea enviarlo?")){
+            alert("Formulario enviado con éxito");
             // enviarFormulario();
         }
     }else{                  
         document.getElementById("Errores").style.display = "block";  
     }
+    return 0;
 }
 
+
+function todasCorrectas(){
+    let dniBol = comprobarDNI();
+    let emailBol = comprobarEMAIL();
+    let tlfBol = comprobarTLF();
+    let sexoBol = comprobarSEXO();
+    let fechaBol = comprobarFecha();
+
+    let resultado = new Boolean();
+
+    resultado = dniBol && emailBol && tlfBol && sexoBol && fechaBol;
+
+    return resultado;
+
+}
 
 function comprobarDNI(){
     const DNI_REGEX = /^(\d{8})([A-Z])$/;  //Expresión regular del DNI (8 dígitos, 1 letra al final)
@@ -42,7 +57,6 @@ function comprobarEMAIL(){
     if(bool){
         document.getElementById("errorEMAIL").style.display = "none";
     }
-
     return bool;
 }
 
@@ -58,7 +72,6 @@ function comprobarTLF() {
     if(bool){
         document.getElementById("errorTLF").style.display = "none";
     }
-
     return bool;
 }
 
@@ -74,7 +87,6 @@ function comprobarSEXO(){
     if(bool){
         document.getElementById("errorSEXO").style.display = "none";
     }
-
     return bool;
 }
 
@@ -83,16 +95,37 @@ function comprobarFecha(){
     fecha = document.getElementById("fechNacimiento").value;
     let fechaIntroducida = fecha.split("-");
     let fechaActual = new Date();
-    let bool = true;
-    if(fechaIntroducida[0] > fechaActual.getFullYear() || fechaIntroducida[1] > fechaActual.getMonth()+1  || fechaIntroducida[2] > fechaActual.getDate()){
-        document.getElementById("errorFecha").style.display = "block";  
-        bool = false;
-    }
+    let bool = false; //May change true
 
-    if(bool){
-        document.getElementById("errorFecha").style.display = "none";  
+    if(fecha == ""){
+        document.getElementById("errorFechaDefault").style.display = "block";
+        document.getElementById("errorFechaPosterior").style.display = "none";
+    }else{
+        document.getElementById("errorFechaDefault").style.display = "none";
+        if(fechaIntroducida[0] > fechaActual.getFullYear()){ //Si el año es superior
+            document.getElementById("errorFechaPosterior").style.display = "block"; 
+        }else{
+            if(fechaIntroducida[0] == fechaActual.getFullYear() && fechaIntroducida[1] > fechaActual.getMonth()+1  && fechaIntroducida[2] > fechaActual.getDate()){ //Si el año es igual miro mes y día
+                document.getElementById("errorFechaPosterior").style.display = "block"; 
+            }else{
+                if(fechaIntroducida[0] == fechaActual.getFullYear() && fechaIntroducida[1] == fechaActual.getMonth()+1  && fechaIntroducida[2] > fechaActual.getDate()){ //Si el año y el mes es igual miro el día
+                    document.getElementById("errorFechaPosterior").style.display = "block"; 
+                }else{
+                    bool = true;
+                }
+            } 
+        }
     }
-
+        /*
+        if(fechaIntroducida[0] > fechaActual.getFullYear() || (fechaIntroducida[1] > fechaActual.getMonth()+1  && fechaIntroducida[2] > fechaActual.getDate())){ //Año mes y día superior
+            document.getElementById("errorFechaPosterior").style.display = "block";  
+            bool = false;
+        }
+        */
+        if(bool){
+            document.getElementById("errorFechaPosterior").style.display = "none";  
+        }
+    
     return bool;
 }
 
@@ -102,6 +135,7 @@ function enviarFormulario(){
 
 function resetearFormulario(){
     alert("El formulario se va ha reiniciar");
+    document.getElementById("Errores").style.display = "none"; 
 }
 
 function logoMSI(){
@@ -119,5 +153,5 @@ document.getElementById("errorDNI").style.display = "none";
 document.getElementById("errorEMAIL").style.display = "none";
 document.getElementById("errorTLF").style.display = "none";
 document.getElementById("errorSEXO").style.display = "none";
-document.getElementById("errorFecha").style.display = "none";
+document.getElementById("errorFechaPosterior").style.display = "none";
 */

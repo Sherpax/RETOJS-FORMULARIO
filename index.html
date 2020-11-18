@@ -79,7 +79,7 @@
 
                 <tr>
                     <td><label for="fechNacimiento">Fecha Nacimiento:</label></td>
-                    <td><input type="date" id="fechNacimiento" name="fechNacimiento" class="inputForm"></td>
+                    <td><input type="date" id="fechNacimiento" name="fechNacimiento" class="inputForm"><span style="color: red;">*</span></td>
                 </tr>
 
             </table>
@@ -97,7 +97,7 @@
         <div id="Errores">
             <p id="errorDNI">
                 <span style="color: red;">*</span>
-                El DNI no es correcto (8 dígitos, 1 número)
+                El DNI no es correcto (8 dígitos, 1 caracter)
             </p>
             <p id="errorEMAIL">
                 <span style="color: red;">*</span>
@@ -111,9 +111,13 @@
                 <span style="color: red;">*</span>
                 Elija un sexo
             </p>
-            <p id="errorFecha">
+            <p id="errorFechaPosterior">
                 <span style="color: red;">*</span>
                 La fecha introducida es posterior a la actual
+            </p>
+            <p id="errorFechaDefault">
+                <span style="color: red;">*</span>
+                Debe introducir una fecha de nacimiento
             </p>
         </div>
 
