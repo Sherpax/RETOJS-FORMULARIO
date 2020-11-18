@@ -10,7 +10,7 @@ function compruebaFormulario(){
     }else{                  
         document.getElementById("Errores").style.display = "block";  
     }
-    return 0;
+    return 0; //¿Eliminar?
 }
 
 
