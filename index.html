@@ -9,9 +9,9 @@
 </head>
 
 <body class="test" background="img/sc-Background.jpg">
-
+    
     <h1 class="logoGrande">STAR CITIZEN</h1>
-
+    
     <div class="form"> 
         <form method="GET"> <!-- A tener en cuenta: El tratamiento de los asteriscos en rojo, según el tipo de dato-->
             <table>
@@ -32,26 +32,26 @@
                         <label for="apellidos">Apellidos:</label>
                     </td>
                     <td>
-                         <input type="text" id="apellidos" name="apellidos" class="inputForm">
+                        <input type="text" id="apellidos" name="apellidos" class="inputForm">
                     </td>
                 </tr>
-
+                
                 <tr>
                     <td><label for="email">Email:</label></td>
                     <td><input type="text" name="email" id="email" class="inputForm" required><span style="color: red;">*</span></td>
                 </tr>
-
+                
                 <tr>
                     <td><label for="telefono">Teléfono:</label></td>
                     <td><input type="text" name="telefono" id="telefono" class="inputForm" required><span style="color: red;">*</span></td>
                 </tr>
-
-
+                
+                
                 <tr>
                     <td><label for="direccion">Dirección:</label></td>
                     <td><input type="text" name="direccion" class="inputForm"></td>
                 </tr>
-
+                
                 <tr>
                     <td><label for="sexo">Sexo:</label></td>
                     <td>
@@ -60,11 +60,11 @@
                             <option value="mujer">Mujer</option>
                             <option value="hombre">Hombre</option>
                             <option value="otro">Otro</option>  
-                      </select>
-                      <span style="color: red;">*</span>
+                        </select>
+                        <span style="color: red;">*</span>
                     </td>
                 </tr>
-
+                
                 <tr>
                     <td><label for="estadoCivil">Estado Civil:</label></td>
                     <td>
@@ -73,26 +73,26 @@
                             <option value="soltero">Soltero/a</option>
                             <option value="casado">Casado/a</option>
                             <option value="complicado">Es complicado</option>
-                          </select>
+                        </select>
                     </td>
                 </tr>
-
+                
                 <tr>
                     <td><label for="fechNacimiento">Fecha Nacimiento:</label></td>
                     <td><input type="date" id="fechNacimiento" name="fechNacimiento" class="inputForm"><span style="color: red;">*</span></td>
                 </tr>
-
+                
             </table>
-
+            
             <div class="botonera">
                 <input class="botonEnviar" type="submit" onclick="compruebaFormulario()" value="Enviar formulario">
                 <input class="botReset" type="reset" onclick="resetearFormulario()" value="Resetear">
             </div>
-
+            
             <img class="miniLogo" onclick="logoRSI()" alt="RSI" src="img/rsi-mini-logo.jpg">
-        
+            
         </form>
-
+        
         <br>
         <div id="Errores">
             <p id="errorDNI">
@@ -120,7 +120,7 @@
                 Debe introducir una fecha de nacimiento
             </p>
         </div>
-
+        
     </div>
     <script src="js/formulario.js"></script> <!-- Script formulario -->
 </body>
