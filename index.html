@@ -11,20 +11,23 @@
 <body class="test" background="img/sc-Background.jpg">
     
     <h1 class="logoGrande">STAR CITIZEN</h1>
-    
     <div class="form"> 
-        <form method="GET"> <!-- A tener en cuenta: El tratamiento de los asteriscos en rojo, según el tipo de dato-->
+        <form method="GET"> 
             <table>
                 <tr>
+                    <td><label for="nickname">Nombre usuario:</label></td>
+                    <td><input type="text" id="nickname" class="inputForm" required></td>
+                </tr>
+                <tr>
                     <td><label for="dni">DNI:</label></td>
-                    <td><input type="text" id="dni*" class="inputForm" required><span style="color: red;">*</span></td>
+                    <td><input type="text" id="dni*" class="inputForm" required></td>
                 </tr>
                 <tr>
                     <td>
                         <label for="nombre">Nombre:</label>
                     </td>
                     <td>
-                        <input type="text" name="nombre" class="inputForm">
+                        <input type="text" id="nombre" name="nombre" class="inputForm" required>
                     </td>
                 </tr>
                 <tr>
@@ -32,24 +35,24 @@
                         <label for="apellidos">Apellidos:</label>
                     </td>
                     <td>
-                        <input type="text" id="apellidos" name="apellidos" class="inputForm">
+                        <input type="text" id="apellidos" name="apellidos" class="inputForm" required>
                     </td>
                 </tr>
                 
                 <tr>
                     <td><label for="email">Email:</label></td>
-                    <td><input type="text" name="email" id="email" class="inputForm" required><span style="color: red;">*</span></td>
+                    <td><input type="text" name="email" id="email" class="inputForm" required></td>
                 </tr>
                 
                 <tr>
                     <td><label for="telefono">Teléfono:</label></td>
-                    <td><input type="text" name="telefono" id="telefono" class="inputForm" required><span style="color: red;">*</span></td>
+                    <td><input type="text" name="telefono" id="telefono" class="inputForm" required></td>
                 </tr>
                 
                 
                 <tr>
                     <td><label for="direccion">Dirección:</label></td>
-                    <td><input type="text" name="direccion" class="inputForm"></td>
+                    <td><input type="text" name="direccion" id="direccion" class="inputForm" required></td>
                 </tr>
                 
                 <tr>
@@ -61,14 +64,13 @@
                             <option value="hombre">Hombre</option>
                             <option value="otro">Otro</option>  
                         </select>
-                        <span style="color: red;">*</span>
                     </td>
                 </tr>
                 
                 <tr>
                     <td><label for="estadoCivil">Estado Civil:</label></td>
                     <td>
-                        <select class="estadoCivil" name="estadoCivil">
+                        <select class="estadoCivil" id="estCivil" name="estadoCivil">
                             <option></option>
                             <option value="soltero">Soltero/a</option>
                             <option value="casado">Casado/a</option>
@@ -79,7 +81,7 @@
                 
                 <tr>
                     <td><label for="fechNacimiento">Fecha Nacimiento:</label></td>
-                    <td><input type="date" id="fechNacimiento" name="fechNacimiento" class="inputForm"><span style="color: red;">*</span></td>
+                    <td><input type="date" id="fechNacimiento" name="fechNacimiento" class="inputForm" required></td>
                 </tr>
                 
             </table>
@@ -95,9 +97,21 @@
         
         <br>
         <div id="Errores">
+            <p id="errorNickname">
+                <span style="color: red;">*</span>
+                El nombre de usuario no puede estar vacío
+            </p>
             <p id="errorDNI">
                 <span style="color: red;">*</span>
                 El DNI no es correcto (8 dígitos, 1 caracter)
+            </p>
+            <p id="errorNombreLongitud">
+                <span style="color: red;">*</span>
+                El nombre no puede tener más de 15 caracteres
+            </p>
+            <p id="errorApellidoLongitud">
+                <span style="color: red;">*</span>
+                El apellido no puede tener más de 25 caracteres
             </p>
             <p id="errorEMAIL">
                 <span style="color: red;">*</span>
@@ -111,6 +125,14 @@
                 <span style="color: red;">*</span>
                 Elija un sexo
             </p>
+            <p id="errorCivil">
+                <span style="color: red;">*</span>
+                Elija un estado civil
+            </p>
+            <p id="errorDireccion">
+                <span style="color: red;">*</span>
+                La dirección no puede ser superior a 40 caracteres
+            </p>
             <p id="errorFechaPosterior">
                 <span style="color: red;">*</span>
                 La fecha introducida es posterior a la actual
@@ -118,6 +140,10 @@
             <p id="errorFechaDefault">
                 <span style="color: red;">*</span>
                 Debe introducir una fecha de nacimiento
+            </p>
+            <p id="errorCamposVacios">
+                <span style="color: red;">*</span>
+                Compruebe los campos vacíos
             </p>
         </div>
         

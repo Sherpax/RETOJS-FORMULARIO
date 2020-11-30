@@ -1,32 +1,92 @@
+"use strict"; //Usamos esto para obligar a utilizar el JS más moderno posible, y evitar errores 'silenciosos' de versiones antiguas
+
 function compruebaFormulario(){
     
     if(todasCorrectas()){
         //Si ha pasado todos los filtros, podemos enviar el formulario y borramos los errores
-        document.getElementById("errorFechaPosterior").style.display = "none";
+        document.getElementById("Errores").style.display = "none";
         if(window.confirm("Revise los datos antes de enviar el formulario. \n ¿Seguro que desea enviarlo?")){
             enviarFormulario();
         }
     }else{                  
         document.getElementById("Errores").style.display = "block";  
     }
-    return 0; //¿Eliminar?
+
+    return 0; 
 }
 
 //Función que comprueba que todas los datos obligatorios son correctos
 function todasCorrectas(){
+    let nickname = comprobarNickName();
     let dniBol = comprobarDNI();
+    let nombre = compruebaNombre();
+    let apellidos = compruebaApellido();
     let emailBol = comprobarEMAIL();
     let tlfBol = comprobarTLF();
+    let direccion = comprobarDireccion();
     let sexoBol = comprobarSEXO();
+    let estadoCivil = comprobarEstadoCivil();
     let fechaBol = comprobarFecha();
+    
     
     let resultado = new Boolean();
     
-    resultado = dniBol && emailBol && tlfBol && sexoBol && fechaBol;
+    resultado = nickname && nombre && apellidos && dniBol && emailBol && 
+    tlfBol && direccion && sexoBol && estadoCivil && fechaBol;
     
     return resultado;
     
 }
+
+//Función que comprueba el nombre de usuario
+function comprobarNickName(){
+    let nickname = new String();
+    nickname = document.getElementById("nickname").value;
+    //Comprobamos si el campo está vacío
+    if(nickname.trim() == ""){
+        document.getElementById("errorNickname").style.display = "block";
+    }else{
+        document.getElementById("errorNickname").style.display = "none";
+    }
+
+    return !nickname.trim() == "";
+}
+
+//Función que comprueba el nombre real de la persona
+function compruebaNombre(){
+    
+    let nombre = new String();
+    nombre = document.getElementById("nombre").value;
+    let esCorrecto = new Boolean();
+    esCorrecto = false;
+
+    if(nombre.length > 15){ 
+        document.getElementById("errorNombreLongitud").style.display = "block";
+    }else{
+        document.getElementById("errorNombreLongitud").style.display = "none";
+        esCorrecto = true;
+    
+    }
+    return esCorrecto;
+}
+
+//Función que comprueba el apellido real de la persona
+function compruebaApellido(){
+
+    let apellidos = new String();
+    apellidos = document.getElementById("apellidos").value;
+    let esCorrecto = new Boolean();
+    esCorrecto = false;
+
+    if(apellidos.length > 25){ 
+        document.getElementById("errorApellidoLongitud").style.display = "block";
+    }else{
+        document.getElementById("errorApellidoLongitud").style.display = "none";
+        esCorrecto = true;
+    }
+    return esCorrecto;
+}
+
 
 //Función que comprueba que se ha introducido un DNI correcto (8 dígitos, 1 caracter) en el formulario
 function comprobarDNI(){
@@ -77,6 +137,23 @@ function comprobarTLF() {
     return bool;
 }
 
+function comprobarDireccion(){
+
+    let direccion = new String();
+    direccion = document.getElementById("direccion").value;
+    let esCorrecto = new Boolean();
+    esCorrecto = false;
+
+    if(direccion.length > 40){ 
+        document.getElementById("errorDireccion").style.display = "block";
+    }else{
+        document.getElementById("errorDireccion").style.display = "none";
+        esCorrecto = true;
+    }
+    return esCorrecto;
+
+}
+
 //Función que comprueba que se ha seleccionado un sexo en el formulario
 function comprobarSEXO(){    
     let sexo = new String();
@@ -91,6 +168,23 @@ function comprobarSEXO(){
         document.getElementById("errorSEXO").style.display = "none";
     }
     return bool;
+}
+
+function comprobarEstadoCivil(){
+
+    let sexo = new String();
+    sexo = document.getElementById("estCivil").value;
+    let bool = true;
+    if(sexo == ""){
+        document.getElementById("errorCivil").style.display = "block";
+        bool = false;
+    }
+    
+    if(bool){
+        document.getElementById("errorCivil").style.display = "none";
+    }
+    return bool;
+    
 }
 
 //Función que comprueba que la fecha de nacimiento cumple ciertas normas para ser correcta
