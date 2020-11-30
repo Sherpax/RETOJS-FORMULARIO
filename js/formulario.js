@@ -11,7 +11,7 @@ function compruebaFormulario(){
     }else{                  
         document.getElementById("Errores").style.display = "block";  
     }
-
+    
     return 0; 
 }
 
@@ -48,7 +48,7 @@ function comprobarNickName(){
     }else{
         document.getElementById("errorNickname").style.display = "none";
     }
-
+    
     return !nickname.trim() == "";
 }
 
@@ -59,25 +59,25 @@ function compruebaNombre(){
     nombre = document.getElementById("nombre").value;
     let esCorrecto = new Boolean();
     esCorrecto = false;
-
+    
     if(nombre.length > 15){ 
         document.getElementById("errorNombreLongitud").style.display = "block";
     }else{
         document.getElementById("errorNombreLongitud").style.display = "none";
         esCorrecto = true;
-    
+        
     }
     return esCorrecto;
 }
 
 //Función que comprueba el apellido real de la persona
 function compruebaApellido(){
-
+    
     let apellidos = new String();
     apellidos = document.getElementById("apellidos").value;
     let esCorrecto = new Boolean();
     esCorrecto = false;
-
+    
     if(apellidos.length > 25){ 
         document.getElementById("errorApellidoLongitud").style.display = "block";
     }else{
@@ -138,12 +138,12 @@ function comprobarTLF() {
 }
 
 function comprobarDireccion(){
-
+    
     let direccion = new String();
     direccion = document.getElementById("direccion").value;
     let esCorrecto = new Boolean();
     esCorrecto = false;
-
+    
     if(direccion.length > 40){ 
         document.getElementById("errorDireccion").style.display = "block";
     }else{
@@ -151,7 +151,7 @@ function comprobarDireccion(){
         esCorrecto = true;
     }
     return esCorrecto;
-
+    
 }
 
 //Función que comprueba que se ha seleccionado un sexo en el formulario
@@ -171,7 +171,7 @@ function comprobarSEXO(){
 }
 
 function comprobarEstadoCivil(){
-
+    
     let sexo = new String();
     sexo = document.getElementById("estCivil").value;
     let bool = true;
@@ -191,7 +191,8 @@ function comprobarEstadoCivil(){
 function comprobarFecha(){
     let fecha = new String();
     fecha = document.getElementById("fechNacimiento").value;
-    let fechaIntroducida = fecha.split("-");
+    let fechaIntroducida = fecha.split("-"); //Hacemos un split para crear el constructor con los datos introducidos en la fecha
+    fechaIntroducida = new Date(fechaIntroducida[0],fechaIntroducida[1]-1,fechaIntroducida[2]); //Le restamos 1 al mes, ya que va de 0-11 y no de 1-12
     let fechaActual = new Date();
     let bool = false; 
     
@@ -200,31 +201,28 @@ function comprobarFecha(){
         document.getElementById("errorFechaDefault").style.display = "block";
         document.getElementById("errorFechaPosterior").style.display = "none";
     }else{
+        //Comprobamos que las fecha introducida no sea superior a la actual (no puede haber nacido mañana)
         document.getElementById("errorFechaDefault").style.display = "none";
-        //Si el año es superior
-        if(fechaIntroducida[0] > fechaActual.getFullYear()){ 
+        //Si la fecha introducida es superior a la actual
+        if(fechaIntroducida > fechaActual){ 
             document.getElementById("errorFechaPosterior").style.display = "block"; 
         }else{
-            //Si el año es igual miro mes y día
-            if(fechaIntroducida[0] == fechaActual.getFullYear() && fechaIntroducida[1] > fechaActual.getMonth()+1  && fechaIntroducida[2] > fechaActual.getDate()){
-                document.getElementById("errorFechaPosterior").style.display = "block"; 
-            }else{
-                //Si el año y el mes es igual miro el día
-                if(fechaIntroducida[0] == fechaActual.getFullYear() && fechaIntroducida[1] == fechaActual.getMonth()+1  && fechaIntroducida[2] > fechaActual.getDate()){
-                    document.getElementById("errorFechaPosterior").style.display = "block"; 
-                }else{
-                    bool = true;
-                }
-            } 
+            document.getElementById("errorFechaPosterior").style.display = "none"; 
+            bool = true;
         }
+        
     }
+    
     
     if(bool){
         document.getElementById("errorFechaPosterior").style.display = "none";  
     }
     
     return bool;
-}
+    
+} 
+
+
 
 //Función que muestra el mensaje de que ha sido enviado
 function enviarFormulario(){
