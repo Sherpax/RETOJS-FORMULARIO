@@ -1,0 +1,22 @@
+Archivos y descripción de los mismos:
+
+index.html
+
+Este archivo contiene toda la estructura html del formulario, incluyendo los enlaces al CSS principal y el archivo JS correspondiente y sus eventos asociados, siendo este último enlazado justo antes del cierre de la etiqueta <body>, de modo que así se pueda mejorar el procesado de la web durante su renderización.
+
+El formulario sigue una estructura de tabla, donde existe un par fila-columna, conteniendo la descripción del campo y el campo mismamente, a su vez, cada campo tiene un asterisco rojo (*) indicando que ese campo es obligatorio y debe ser rellenado obligatoriamente, de igual modo, poseen un atributo required, que indicará al usuario que debe rellenar obligatoriamente esos campos.
+
+Además, existen 2 botones con 2 eventos asociados, estos eventos son concretamente: compruebaFormulario() y resetearFormulario()
+
+Si al pulsar sobre el botón de Enviar Formulario, existe algún campo obligatorio erróneo, entonces, a través de JavaScript, se mostrará un bloque oculto que contiene los errores asociados a cada campo obligatorio que no haya sido correctamente rellenado.
+
+Estos errores aparecerán al pie del formulario, con un asterisco rojo al comienzo de cada uno, indicando lo que debe de rellenar. 
+
+css/style.css
+
+Este archivo contiene los estilos del formulario y el resto del index.html, además de un @-webkit-keyframes, que genera el cambio de color e intensidad del logo principal situado en la parte superior del formulario.
+
+
+js/formulario.js
+
+Este archivo contiene todo el código Javascript, contiene diversas funciones para comprobar el correcto funcionamiento de los campos.
